@@ -1,0 +1,283 @@
+//COLORS
+$gray-border: #999999;
+$gray-text: #333943;
+$valid: #00cc00;
+$error: #cc1100;
+
+//ICONS
+@font-face {
+  font-family: 'icomoon';
+  src: url('./../assets/fonts/icomoon.eot?h13ub4');
+  src: url('./../assets/fonts/icomoon.eot?h13ub4#iefix') format('embedded-opentype'),
+    url('./../assets/fonts/icomoon.ttf?h13ub4') format('truetype'),
+    url('./../assets/fonts/icomoon.woff?h13ub4') format('woff'),
+    url('./../assets/fonts/icomoon.svg?h13ub4#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-times:before {
+  content: "\e900";
+}
+.icon-check:before {
+  content: "\e901";
+}
+
+
+*{
+  box-sizing: border-box;
+}
+html, body{
+  color: $gray-text;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+}
+body{
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+h1{
+  margin: 0 0 30px;
+}
+main{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 30px;
+  @media screen and (min-width: 720px) {
+    max-width: 720px;
+    padding: 30px 60px;
+  }
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  fieldset{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-gap: 30px 30px;
+    border: 0;
+    margin: 0 0 35px;
+    padding: 0;
+    @media screen and (min-width: 720px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .form-group{
+    margin: 0;
+    min-width: 260px;
+    position: relative;
+    .input-label{
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0 0 6px;
+    }
+    .input-group{
+      display: block;
+      position: relative;
+      input{
+        border: 1px solid $gray-border;
+        border-radius: 6px;
+        color: $gray-text;
+        display: block;
+        font-size: 16px;
+        padding: 8px 35px 8px 15px;
+        width: 100%;
+        transition: .3s;
+        &::placeholder{
+          color: $gray-border;
+        }
+        &:focus{
+          box-shadow: 0 0 10px $gray-border;
+          outline: none;
+        }
+      }
+      .icon-demo{
+        background: transparent;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        font-size: 10px;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 12px;
+        top: calc(50% - 9px);
+        pointer-events: none;
+        width: 18px;
+        height: 18px;
+        opacity: 0;
+        padding-top: 2px;
+        transition: .3s;
+      }
+    }
+    .input-help{
+      font-size: 10px;
+      margin: 0;
+      position: absolute;
+      top: calc(100% + 3px);
+      z-index: 2;
+      visibility: hidden;
+      opacity: 0;
+      transition: .3s;
+    }
+    &.has-error{
+      .input-group{
+        input{
+          &:focus{
+            border-color: $error;
+          }
+        }
+        input:focus ~ .icon-demo{
+          background: $error;
+          opacity: 1;
+        }
+      }
+      .input-help{
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+    &.is-valid{
+      .input-group{
+        input{
+          border-color: $valid;
+        }
+        .icon-demo{
+          background: $valid;
+          opacity: 1;
+          &::before{
+            content: '\e901';
+          }
+        }
+      }
+    }
+  }
+  .form-group-terms{
+    display: flex;
+    margin: 0 0 30px;
+    .input-group{
+      position: relative;
+      margin: 0 12px auto 0;
+      input{
+        width: 20px;
+        height: 20px;
+        opacity: 0;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      input:checked + .input-style{
+        background: $gray-text;
+        &::after{
+          opacity: 1;
+        }
+      }
+      .input-style{
+        background: white;
+        border: 1px solid $gray-text;
+        border-radius: 3px;
+        cursor: pointer;
+        display: flex;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        transition: .3s;
+        &::after{
+          content: "\e901";
+          color: white;
+          display: block;
+          font-family: 'icomoon';
+          font-size: 10px;
+          line-height: 1;
+          margin: auto;
+          opacity: 0;
+          padding-top: 1px;
+          transition: .3s;
+        }
+      }
+    }
+    .input-label{
+      margin: 2px 0 0;
+      span{
+        cursor: pointer;
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+    }
+  }
+  .form-message{
+    font-size: 14px;
+    visibility: hidden;
+    opacity: 0;
+    margin: 0;
+    transition: .3s;
+    &:not(:empty){
+      margin: 0 0 20px;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .btn-submit{
+    background: $gray-text;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    width: fit-content;
+    min-width: 180px;
+    &:disabled{
+      cursor: not-allowed;
+      opacity: .6;
+    }
+  }
+}
+.modal{
+  border-radius: 12px;
+  border: none;
+  max-width: 720px;
+  padding: 30px;
+  h1{
+    padding-right: 30px;
+  }
+  p{
+    margin: 0 0 12px;
+  }
+  *:last-child{
+    margin-bottom: 0;
+  }
+  .icon-times{
+    cursor: pointer;
+    font-size: 30px;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+  }
+  &::backdrop{
+    background: rgba($gray-text, .6);
+  }
+}

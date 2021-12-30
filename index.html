@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Registro</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+
+	<template id="inputTemplate">
+		<div class="form-group">
+			<label for="" class="input-label"></label>
+			<div class="input-group">
+				<input type="text" id="" name="">
+				<span class="icon-demo icon-times"></span>
+			</div>
+			<p class="input-help"></p>
+		</div>
+	</template>
+
+	<main>
+		<h1>Registro</h1>
+		<form action="" class="form" id="form">
+
+			<fieldset id="fieldsContainer"></fieldset>
+
+			<div class="form-group-terms">
+				<div class="input-group">
+					<input type="checkbox" id="terms" name="terms">
+					<label for="terms" class="input-style"></label>
+				</div>
+				<label for="terms" class="input-label">Acepto los <span onclick="window.modalTerms.showModal()">Términos
+						y condiciones</span></label>
+			</div>
+
+			<p class="form-message" id="formMessage"></p>
+			<button class="btn-submit" id="btnSubmit">Enviar</button>
+
+		</form>
+	</main>
+
+	<dialog class="modal" id="modalTerms">
+		<div class="icon-times" onclick="window.modalTerms.close()"></div>
+		<h1>Términos y condiciones</h1>
+		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad, natus tempora esse minus delectus blanditiis
+			saepe adipisci magni sed nostrum sit eos minima omnis!</p>
+		<p>Eveniet nisi tempore aliquid exercitationem dolor. Expedita nostrum accusantium autem odio aperiam suscipit
+			veritatis minima, earum deleniti? Ex quaerat quod corporis facilis magnam tempore.</p>
+		<p>Quidem nobis rerum recusandae itaque, nihil alias perspiciatis harum dolorum, error molestias facilis, facere
+			quaerat assumenda dignissimos mollitia numquam inventore animi quia minima aliquam?</p>
+		<p>Deserunt maxime illo et quas quaerat, unde minus animi commodi perspiciatis? Quaerat cum nostrum laborum
+			cumque, obcaecati harum eum eveniet facilis natus, magni atque!</p>
+	</dialog>
+
+	<script src="./js/main.js"></script>
+</body>
+
+</html>
