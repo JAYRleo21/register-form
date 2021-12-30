@@ -1,2 +1,2 @@
 # JAYRleo DEV
-Formulario simple usando <template> html y javascript vanilla
+Formulario simple usando html, scss, y javascript vanilla
